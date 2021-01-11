@@ -8,13 +8,12 @@ def decorator(number=3):
             Call = []
             i = 0
             sum_ = 0
-            while i < number:
+            for i in range(number):
                 start_time = time.time()
                 result = func()
                 end_time = time.time()
                 Call.append(end_time - start_time)
                 sum_ += (end_time - start_time)
-                i += 1
             res = {
                 'Every_Call': Call,
                 'Total_Time': sum_,
