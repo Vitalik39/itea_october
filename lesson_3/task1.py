@@ -4,13 +4,13 @@ def decorator(number=3):
 
     def actual_decorator(func):
 
-        def wrapper():
-            Call = []
+        def wrapper(*args):
+            Call = list()
             i = 0
             sum_ = 0
             for i in range(number):
                 start_time = time.time()
-                result = func()
+                result = func(*args)
                 end_time = time.time()
                 Call.append(end_time - start_time)
                 sum_ += (end_time - start_time)
@@ -18,7 +18,7 @@ def decorator(number=3):
                 'Every_Call': Call,
                 'Total_Time': sum_,
                 'Name': func.__name__,
-                'Result': func()
+                'Result': result
             }
             return res
         return wrapper
